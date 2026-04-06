@@ -179,11 +179,11 @@ with st.sidebar:
 
 # ── Page routing ───────────────────────────────────────────────────
 if page == "📊 Dashboard":
-    from app.pages.dashboard import render
+    from app.views.dashboard import render
     render()
 elif page == "🧠 Smart Alerts":
-    from app.pages.smart_alerts import render
+    from app.views.smart_alerts import render
     render()
 elif page == "🔬 Exploration":
-    from app.pages.exploration import render
+    from app.views.exploration import render
     render()
