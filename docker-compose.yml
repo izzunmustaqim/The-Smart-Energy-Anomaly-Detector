@@ -1,0 +1,49 @@
+# ============================================
+# Smart Energy Anomaly Detector
+# Docker Compose Orchestration
+# ============================================
+#
+# Usage:
+#   docker compose up              # Run everything (processor then app)
+#   docker compose up processor    # Run only the data processor
+#   docker compose up streamlit    # Run only the Streamlit app
+#
+# The processor runs as a batch job (exits on completion).
+# The Streamlit app starts only after the processor finishes.
+
+services:
+  processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.processor
+    container_name: energy-processor
+    volumes:
+      - ./data:/app/data
+      - ./db:/app/db
+    environment:
+      - RESAMPLE_FREQ=1h
+      - CONTAMINATION=0.02
+      - IF_WEIGHT=0.5
+      - PROPHET_WEIGHT=0.5
+      - ANOMALY_THRESHOLD_PERCENTILE=95
+      - DATA_DIR=/app/data
+      - DB_PATH=/app/db/anomalies.db
+    restart: "no"
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: energy-dashboard
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./db:/app/db
+    environment:
+      - DATA_DIR=/app/data
+      - DB_PATH=/app/db/anomalies.db
+    depends_on:
+      processor:
+        condition: service_completed_successfully
+    restart: unless-stopped

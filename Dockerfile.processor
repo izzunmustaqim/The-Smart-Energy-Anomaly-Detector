@@ -1,0 +1,26 @@
+FROM python:3.11-slim AS base
+
+WORKDIR /app
+
+# System dependencies for Prophet (cmdstan)
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        build-essential \
+        gcc \
+        g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements-processor.txt .
+RUN pip install --no-cache-dir -r requirements-processor.txt && \
+    python -m cmdstanpy.install_cmdstan --cores 2 --progress
+
+COPY processor/ processor/
+COPY .env.example .env
+
+# Create data directories
+RUN mkdir -p data/raw data/processed data/models db
+
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+
+CMD ["python", "-m", "processor.main"]

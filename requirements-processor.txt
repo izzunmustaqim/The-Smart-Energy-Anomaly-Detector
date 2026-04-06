@@ -1,0 +1,10 @@
+pandas==2.2.3
+numpy==1.26.4
+scikit-learn==1.5.2
+cmdstanpy==1.2.4
+prophet==1.1.6
+pyarrow==18.1.0
+pydantic-settings==2.6.1
+python-dotenv==1.0.1
+requests==2.32.3
+joblib==1.4.2
