@@ -24,11 +24,12 @@ env/
 
 # Data files (large, downloaded at runtime)
 data/raw/
-data/processed/
 data/models/
+# Keep processed data for Streamlit Cloud deployment
+# data/processed/ is tracked
 
-# Database
-db/*.db
+# Database — tracked for deployment
+# db/*.db
 
 # OS
 .DS_Store
