@@ -3,11 +3,19 @@
 An intelligent energy monitoring system that uses **machine learning** to detect and explain anomalous power consumption patterns in household energy data.
 
 <p align="center">
+  <a href="https://the-smart-energy-anomaly-detector-p7ncfpgdbtmmwjgslvmnao.streamlit.app/">
+    <img src="https://static.streamlit.io/badges/streamlit_badge_black_white.svg" alt="Open in Streamlit">
+  </a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Python-3.11-blue?logo=python" alt="Python 3.11">
   <img src="https://img.shields.io/badge/Streamlit-1.40-FF4B4B?logo=streamlit" alt="Streamlit">
   <img src="https://img.shields.io/badge/scikit--learn-1.5-F7931E?logo=scikit-learn" alt="scikit-learn">
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker" alt="Docker">
 </p>
+
+> 🌐 **[Live Demo](https://the-smart-energy-anomaly-detector-p7ncfpgdbtmmwjgslvmnao.streamlit.app/)** — Try it now, no installation needed!
 
 ---
 
@@ -130,7 +138,7 @@ streamlit run app/main.py
 ├── app/                        # STREAMLIT APP SERVICE
 │   ├── main.py                 # Entry point with dark theme
 │   ├── config.py               # App settings
-│   ├── pages/                  # Multi-page navigation
+│   ├── views/                  # Multi-page navigation
 │   │   ├── dashboard.py        # KPIs, trends, heatmap, donut chart
 │   │   ├── smart_alerts.py     # AI-explained anomaly cards
 │   │   └── exploration.py      # Interactive data drill-down
