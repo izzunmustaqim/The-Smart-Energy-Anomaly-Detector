@@ -95,7 +95,7 @@ def render() -> None:
 
     if not df.empty:
         # Show last 30 days by default for performance
-        last_30d = df.last("30D")
+        last_30d = df.loc[df.index >= df.index.max() - pd.Timedelta("30D")]
         scores_30d = scores.loc[scores.index.isin(last_30d.index)].get(
             "is_anomaly", pd.Series(dtype="float64")
         ) if not scores.empty else None
