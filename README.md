@@ -15,7 +15,7 @@ An intelligent energy monitoring system that uses **machine learning** to detect
   <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker" alt="Docker">
 </p>
 
-> 🌐 **[Live Demo](https://the-smart-energy-anomaly-detector-p7ncfpgdbtmmwjgslvmnao.streamlit.app/)** — Try it now, no installation needed!
+> 🌐 **[Live Demo](https://the-smart-energy-anomaly-detector.streamlit.app/)** — Try it now, no installation needed!
 
 ---
 
